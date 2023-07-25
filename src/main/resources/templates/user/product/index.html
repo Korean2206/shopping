@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{/user/layout/layout::areas(~{::title},~{::main})}" >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shoes - Best Seller</title>
+</head>
+<body>
+    <main style="margin:0 50px;margin-top:200px; ">
+    <div th:replace="~{/user/product/_sort::sort}"></div>
+    <div class="row">
+            <div class="col-sm-3 py-2">
+                <div class="card">
+                    <img th:src="@{/product/sp1.webp}" class="card-img-top product_img"
+                        alt="...">
+                    <div class="card-body">
+                        <h6 class="card-title text-center">Áo polo
+                        </h6>
+                        <p class="card-text text-center">1000</p>
+                        <a href="" class="btn btn-secondary ">Thêm vào giỏ hàng</a>
+                        <a href="" class="btn btn-dark mt-1 ">Mua ngay</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 py-2">
+                <div class="card">
+                    <img th:src="@{/product/sp1.webp}" class="card-img-top product_img"
+                        alt="...">
+                    <div class="card-body">
+                        <h6 class="card-title text-center">Áo polo
+                        </h6>
+                        <p class="card-text text-center">1000</p>
+                        <a href="" class="btn btn-secondary ">Thêm vào giỏ hàng</a>
+                        <a href="" class="btn btn-dark mt-1 ">Mua ngay</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 py-2">
+                <div class="card">
+                    <img th:src="@{/product/sp1.webp}" class="card-img-top product_img"
+                        alt="...">
+                    <div class="card-body">
+                        <h6 class="card-title text-center">Áo polo
+                        </h6>
+                        <p class="card-text text-center">1000</p>
+                        <a href="" class="btn btn-secondary ">Thêm vào giỏ hàng</a>
+                        <a href="" class="btn btn-dark mt-1 ">Mua ngay</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 py-2">
+                <div class="card">
+                    <img th:src="@{/product/sp1.webp}" class="card-img-top product_img"
+                        alt="...">
+                    <div class="card-body">
+                        <h6 class="card-title text-center">Áo polo
+                        </h6>
+                        <p class="card-text text-center">1000</p>
+                        <a href="" class="btn btn-secondary ">Thêm vào giỏ hàng</a>
+                        <a href="" class="btn btn-dark mt-1 ">Mua ngay</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-3 py-2">
+                <div class="card">
+                    <img th:src="@{/product/sp1.webp}" class="card-img-top product_img"
+                        alt="...">
+                    <div class="card-body">
+                        <h6 class="card-title text-center">Áo polo
+                        </h6>
+                        <p class="card-text text-center">1000</p>
+                        <a href="" class="btn btn-secondary ">Thêm vào giỏ hàng</a>
+                        <a href="" class="btn btn-dark mt-1 ">Mua ngay</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 py-2">
+                <div class="card">
+                    <img th:src="@{/product/sp1.webp}" class="card-img-top product_img"
+                        alt="...">
+                    <div class="card-body">
+                        <h6 class="card-title text-center">Áo polo
+                        </h6>
+                        <p class="card-text text-center">1000</p>
+                        <a href="" class="btn btn-secondary ">Thêm vào giỏ hàng</a>
+                        <a href="" class="btn btn-dark mt-1 ">Mua ngay</a>
+                    </div>
+                </div>
+            </div>
+    </div>
+    <div th:replace="~{/user/product/_pagination::pagination}"></div>
+</main>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form class="app_select" name="sort" th:fragment="sort" style="text-align:center">
+        <P class="fw-bold d-inline me-1"> <b style="font-size:20px">Xếp theo:</b></P>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="sort" id="inlineRadio1" />
+            <label class="form-check-label" for="inlineRadio1">TÊN A-Z</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="sort" id="inlineRadio2" }>
+            <label class="form-check-label" for="inlineRadio2">TÊN Z-A</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="sort" id="inlineRadio3" }>
+            <label class="form-check-label" for="inlineRadio3">HÀNG MỚI</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="sort" id="inlineRadio4">
+            <label class="form-check-label" for="inlineRadio4">GIÁ TỪ THẤP ĐẾN CAO</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="sort" id="inlineRadio5">
+            <label class="form-check-label" for="inlineRadio5">GIÁ TỪ CAO ĐẾN THẤP</label>
+        </div>
+    </form>
+</body>
+
+</html>

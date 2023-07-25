@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{/user/layout/layout::areas(~{::title},~{::main})}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shoes - Profile </title>
+</head>
+
+<body>
+    <main class=" register_header" style="margin-left: 100px; margin-right:100px;margin-top: 200px;">
+        <h1 style="color:#212529; text-align: center;" class="">Edit Profile</h1>
+        <hr>
+        <div class="row" style="justify-content: center;">
+            <!-- left column -->
+
+            <!-- edit form column -->
+            <div class=" personal-info" >
+                <form class="form-horizontal" role="form" action="" enctype="multipart/form-data"
+                    method="post">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="text-center">
+                                <img style="max-height: 200px;" id="avatar" name="image" src=""
+                                    class="avatar img-circle img-thumbnail" alt="avatar">
+                                <h6>Cập nhật ảnh khác...</h6>
+
+                                <input name="attach" type="file" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">Họ tên:</label>
+                                <div class="col-lg-8">
+                                    <input name="fullname"  class="form-control" type="text">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">Email:</label>
+                                <div class="col-lg-8">
+                                    <input name="email" class="form-control" type="text">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">Password:</label>
+                                <div class="col-lg-8">
+                                    <input name="password"  class="form-control" type="text"
+                                        value="">
+                                </div>
+                            </div>
+
+                            <div class="form-group mt-5">
+                                <button type="submit" style="background-color:#212529; border: none;"
+                                    onclick="saveAlert()" class="btn btn-primary mr-1">Save change</button>
+                                <button formaction="/user/profile/cancel" style="background-color:#212529; border:none;"
+                                    onclick="cancelAlert()" class="btn btn-primary">Cancel</button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
