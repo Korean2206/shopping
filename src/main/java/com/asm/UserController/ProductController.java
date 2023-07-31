@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class ProductController {
     
-    @RequestMapping("/product/best_seller")
-    public String bestSeller(){
-        return "user/product/index";
+    @RequestMapping("/product/list")
+    public String list(){
+        return "user/product/list";
     }
 }
