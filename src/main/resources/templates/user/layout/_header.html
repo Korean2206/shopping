@@ -53,28 +53,25 @@
                 <a class="nav-link mx-2 active" th:href="@{#}" aria-current="page" >TRANG CHỦ</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link mx-2" href="#">Best Seller</a>
+                <a class="nav-link mx-2" th:href="@{|/product/bestseller|}">Best Seller</a>
               </li>
               
               <li class="nav-item dropdown">
-                <a class="nav-link mx-2 dropdown-toggle" href="#" id="navbarDropdownMenuLink1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link  mx-2 dropdown-toggle" th:href="@{|/product/list?gender=male|}" id="navbarDropdownMenuLink1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Man
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1">
-                  <li><a class="dropdown-item" >Áo </a></li>
-                  <li><a class="dropdown-item" >Quần</a></li>
-                  <li><a class="dropdown-item" >Giày</a></li>
+                  <li th:each="c: ${cates}"><a class="dropdown-item" th:href="@{|/product/list?cid=${c.id}&gender=male|}">[[${c.name}]] </a></li>
                 </ul>
               </li>
               
               <li class="nav-item dropdown">
-                <a class="nav-link mx-2 dropdown-toggle" href="#" id="navbarDropdownMenuLink2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link mx-2 dropdown-toggle" th:href="@{|/product/list?gender=female|}" id="navbarDropdownMenuLink2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Woman
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
-                  <li><a class="dropdown-item" >Áo</a></li>
-                  <li><a class="dropdown-item" >Quần</a></li>
-                  <li><a class="dropdown-item" >Giày</a></li>
+                  <li th:each="c: ${cates}"><a class="dropdown-item" th:href="@{|/product/list?cid=${c.id}&gender=female|}">[[${c.name}]] </a></li>
+
                 </ul>
               </li>
             </ul>
