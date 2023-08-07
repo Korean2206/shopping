@@ -19,5 +19,7 @@ public interface ProductService {
     List<Product> findbyBestSeller();
 
     Page<Product> findByidAndGender(String cid, boolean b,Pageable pageable);
+
+    Page<Product> findByKeyword(String string, Pageable pageable);
     
 }

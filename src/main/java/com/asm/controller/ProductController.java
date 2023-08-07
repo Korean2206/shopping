@@ -24,6 +24,10 @@ public class ProductController {
 
     @Autowired
     ProductService productService;
+    @RequestMapping("/product")
+    public String index() {
+        return "user/product/list";
+    }
 
     public Page sort(boolean gender, String sort, Optional<Integer> p, String cid) {
         Page<Product> page;

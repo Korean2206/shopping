@@ -27,11 +27,7 @@ public class AuthInterceptor implements HandlerInterceptor {
             System.out.println("username : null");
         }
         else{
-            if(uri.contains("/security/login/")){
-
-                response.sendRedirect("/home/index");
-                return false;
-            }
+            
             Account account = accountService.findById(username);
             System.out.println("fullname: " +account.getFullname());
             request.setAttribute("fullname",account.getFullname());

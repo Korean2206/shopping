@@ -25,4 +25,6 @@ public interface ProductDAO extends JpaRepository<Product,Integer> {
     +"group by product_id "
     +"order by COUNT(quantity) desc)",nativeQuery = true)
     List<Product> finByBestSeller();
+    @Query("SELECT o FROM Product o WHERE o.name LIKE ?1")
+    Page<Product> findByKeyword(String name,Pageable pageable);
 }

@@ -1,5 +1,6 @@
 package com.asm.controller;
 
+
 import java.io.File;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,7 +11,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -46,7 +49,7 @@ public class SecurityController {
         return "user/security/login";
     }
 
-    @RequestMapping("/security/login/unauthorited")
+    @RequestMapping("/security/login/unauthoried")
     public String unauthorited(Model model) {
         model.addAttribute("message", "bạn không có quyền truy xuất");
         return "user/security/login";
@@ -84,9 +87,16 @@ public class SecurityController {
     
     @Autowired
     AccountService accountService;
+    @GetMapping("/security/profile")
+    public String profile(Model model){
+        String username = request.getRemoteUser();
+        Account user =  accountService.findById(username);
+        model.addAttribute("user", user);
+        return "user/security/profile";
+    }
 
-    @RequestMapping("/security/profile")
-    public String profile(Model model,@RequestParam("attach") MultipartFile file){
+    @PostMapping("/security/profile")
+    public String profile1(Model model,@RequestParam("file") MultipartFile file) {
         String username = request.getRemoteUser();
         String fullname = request.getParameter("fullname") != null ? request.getParameter("fullname") : "";
         String email = request.getParameter("email") != null ? request.getParameter("email") : "";
@@ -113,7 +123,11 @@ public class SecurityController {
         if(image != "")
         user.setPhoto(image);
         accountService.update(user);
-        model.addAttribute("infor", user);
+        model.addAttribute("user", user);
         return "user/security/profile";
+    }
+    @PostMapping("profile/cancel")
+    public String cancel(Model model){
+        return "redirect:/security/profile";
     }
 }

@@ -32,8 +32,8 @@
         <ul class="nav-right">
           <li style="cursor: pointer;">
             <i class="fa fa-search" aria-hidden="true"></i>
-            <form class="nav-search--click">
-              <input type="text" placeholder="search">
+            <form class="nav-search--click"  action="/product/search" method="post">
+              <input type="text" placeholder="search"  name="keyword" th:value="${param.keyword}">
               <button><i class="fa fa-search" aria-hidden="true"></i></button>
             </form>
           </li>

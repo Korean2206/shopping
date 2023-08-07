@@ -67,7 +67,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .tokenValiditySeconds(86400);
 
         http.exceptionHandling()
-            .accessDeniedPage("/security/unauthoried");
+            .accessDeniedPage("/security/login/unauthoried");
 
         http.logout()
             .logoutUrl("/security/logoff")

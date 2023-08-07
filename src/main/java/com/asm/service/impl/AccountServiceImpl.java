@@ -26,6 +26,7 @@ public class AccountServiceImpl implements AccountService {
         if (aDao.existsById(user.getUsername())) {
             throw new Exception();
         }
+        
         return aDao.save(user);
     }
 

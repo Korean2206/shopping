@@ -47,5 +47,11 @@ public class ProductServiceImpl implements ProductService{
         return pDao.finByBestSeller();
     }
 
+    @Override
+    public Page<Product> findByKeyword(String string, Pageable pageable) {
+        // TODO Auto-generated method stub
+        return pDao.findByKeyword(string, pageable);
+    }
+
     
 }
