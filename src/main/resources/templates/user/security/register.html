@@ -12,18 +12,18 @@
         <div class="row text-center mb-5">
             <h2>ĐĂNG KÝ</h2>
         </div>
-        <form:form class="register-form" action="/user/register" modelAttribute="user">
+        <form class="register-form" action="/security/register" method="post" th:object="${user}">
             <div class="row">
                 <div class="col">
                     <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Username</label>
-                        <form:input path="username" type="text" class="form-control" />
+                        <input  style="width: 100%;" th:field="*{username}" placeholder="Username?"> <br> <i style="color:red;" th:errors="*{username}"></i> <br>
+                        <span style="color:red;">[[${message}]]</span>
+
                     </div>
                 </div>
                 <div class="col">
                     <div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label">Mật khẩu</label>
-                        <form:input path="password" type="password" class="form-control" id="exampleInputPassword1" />
+                        <input  style="width: 100%;" th:field="*{password}" type="password" placeholder="Password?"> <br> <i style="color:red;" th:errors="*{password}"></i> <br>
                     </div>
                 </div>
 
@@ -32,33 +32,28 @@
             <div class="row">
                 <div class="col">
                     <div class="mb-3">
-                        <label for="fullname" class="form-label">Họ Tên</label>
-                        <form:input path="fullname" type="text" class="form-control" id="fullname"
-                            aria-describedby="emailHelp" />
+                        <input  style="width: 100%;" th:field="*{fullname}" placeholder="Full name?"> <br> <i style="color:red;" th:errors="*{fullname}"></i> <br>
+
                     </div>
                 </div>
 
                 <div class="col">
                     <div class="mb-3">
-                        <label class="form-label">Số điện thoại</label>
-                        <form:input path="mobile" type="text" class="form-control" />
+                        <input  style="width: 100%;" th:field="*{mobile}" placeholder="Phone number?"> <br> <i style="color:red;" th:errors="*{mobile}"></i> <br>
+
                     </div>
                 </div>
 
             </div>
             <div class="row">
-                <div class="col">
+                <div class="col" >
                     <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Email address</label>
-                        <form:input path="email" type="email" class="form-control" id="exampleInputEmail1"
-                            aria-describedby="emailHelp" />
+                        <input style="width: 100%;" th:field="*{email}" placeholder="Email Address?"> <br> <i style="color:red;" th:errors="*{email}"></i> <br>
                     </div>
                 </div>
-
-
             </div>
-            <button formaction="/user/register" class="btn btn-primary mt-4">Đăng ký</button>
-        </form:form>
+            <button  class="btn btn-primary mt-4">Đăng ký</button>
+        </form>
     </main>
 </body>
 

@@ -20,17 +20,17 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="OrderDetails")
+@Table(name="order_details")
 public class OrderDetail {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    int id;
+    Long id;
     double price;
     int quantity;
     @ManyToOne
-    @JoinColumn(name="productID")
+    @JoinColumn(name="product_id")
     Product product;
     @ManyToOne
-    @JoinColumn(name="orderID")
+    @JoinColumn(name="order_id")
     Order order;
 }

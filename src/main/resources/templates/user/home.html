@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{/user/layout/layout::areas(~{::title},~{::main})}">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shoes - Home</title>
 </head>
+
 <body>
     <main class="app_container" style="margin-top:200px;">
         <div class="container app_product mt-4">
@@ -15,60 +17,27 @@
                         </a>
                     </h2>
                 </div>
-                    <div class="row mt-3">
-                        <div class="col-sm-3 py-2 ">
-                            <div class="card" action="">
-                                <img th:src="@{/product/sp1.webp}"  class="card-img-top product_img" alt="...">
-                                <div class="card-body">
-                                    <h6 class="card-title text-center">
-                                        Áo Polo
-                                    </h6>
-                                    <p class="card-text text-center">1000</p>
-                                    <a href="" class="btn btn-secondary " >Thêm vào giỏ hàng</a>
-                                    <a href="#"  class="btn btn-dark mt-1 ">Mua ngay</a>
-                                </div>
+                <div class="row mt-3">
+                    <div th:each="item: ${items}" class="col-sm-3 py-2 ">
+                        <div class="card" action="">
+                            <a th:href="@{|/product/detail/${item.id}|}">
+                            <img style="height: 200px;
+                                max-width: 100%;object-fit: contain;" th:src="@{|/product/${item.image}|}"
+                                class="card-img-top product_img" alt="${item.image}">
+                            </a>
+                            <div class="card-body">
+                                <h6 class="card-title text-center" th:text="${item.name}">
+                                </h6>
+                                <p class="card-text text-center">$[[${item.price}]]</p>
+                                <button th:attr="ng-click=@{|cart.add(${item.id})|}" class="btn btn-secondary ">Thêm vào
+                                    giỏ hàng</button>
+                                <a href="" class="btn btn-dark mt-1 ">Mua ngay</a>
                             </div>
                         </div>
-                        <div class="col-sm-3 py-2 ">
-                            <div class="card" action="">
-                                <img th:src="@{/product/sp1.webp}"  class="card-img-top product_img" alt="...">
-                                <div class="card-body">
-                                    <h6 class="card-title text-center">
-                                        Áo Polo
-                                    </h6>
-                                    <p class="card-text text-center">1000</p>
-                                    <a href="" class="btn btn-secondary " >Thêm vào giỏ hàng</a>
-                                    <a href="#"  class="btn btn-dark mt-1 ">Mua ngay</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-3 py-2 ">
-                            <div class="card" action="">
-                                <img th:src="@{/product/sp1.webp}"  class="card-img-top product_img" alt="...">
-                                <div class="card-body">
-                                    <h6 class="card-title text-center">
-                                        Áo Polo
-                                    </h6>
-                                    <p class="card-text text-center">1000</p>
-                                    <a href="" class="btn btn-secondary " >Thêm vào giỏ hàng</a>
-                                    <a href="#"  class="btn btn-dark mt-1 ">Mua ngay</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-3 py-2 ">
-                            <div class="card" action="">
-                                <img th:src="@{/product/sp1.webp}"  class="card-img-top product_img" alt="...">
-                                <div class="card-body">
-                                    <h6 class="card-title text-center">
-                                        Áo Polo
-                                    </h6>
-                                    <p class="card-text text-center">1000</p>
-                                    <a href="" class="btn btn-secondary " >Thêm vào giỏ hàng</a>
-                                    <a href="#"  class="btn btn-dark mt-1 ">Mua ngay</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div> 
+                    </div>
+
+
+                </div>
             </div>
             <div class="row mt-5">
                 <div class="row" style="width: 100%; justify-content: center;">
@@ -78,43 +47,44 @@
                 </div>
                 <div class="row mt-5">
                     <div class="col-sm-6">
-                        <div class="card border-0" >
+                        <div class="card border-0">
                             <img th:src="@{/images/look1.webp}" height="350" class="card-img-top" alt="...">
                             <div class="card-body">
-                              <p class="card-text text-center fw-bolder fs-4">CAT & RABBIT COLLECTION</p>
+                                <p class="card-text text-center fw-bolder fs-4">CAT & RABBIT COLLECTION</p>
                             </div>
-                          </div>
+                        </div>
                     </div>
                     <div class="col-sm-6">
-                        <div class="card border-0" >
-                            <img th:src="@{/images/look2.webp}"height="350" class="card-img-top" alt="...">
+                        <div class="card border-0">
+                            <img th:src="@{/images/look2.webp}" height="350" class="card-img-top" alt="...">
                             <div class="card-body">
-                              <p class="card-text text-center fw-bolder fs-4">HELIANTHUS COLLECTION</p>
+                                <p class="card-text text-center fw-bolder fs-4">HELIANTHUS COLLECTION</p>
                             </div>
-                          </div>
+                        </div>
                     </div>
                 </div>
                 <div class="row mt-5">
                     <div class="col-sm-6">
-                        <div class="card border-0" >
+                        <div class="card border-0">
                             <img th:src="@{/images/look3.webp}" height="350" class="card-img-top" alt="...">
                             <div class="card-body">
-                              <p class="card-text text-center fw-bolder fs-4">SPRING 2023 COLLECTION</p>
+                                <p class="card-text text-center fw-bolder fs-4">SPRING 2023 COLLECTION</p>
                             </div>
-                          </div>
+                        </div>
                     </div>
                     <div class="col-sm-6">
-                        <div class="card border-0" >
+                        <div class="card border-0">
                             <img th:src="@{/images/look4.webp}" height="350" class="card-img-top" alt="...">
                             <div class="card-body">
-                              <p class="card-text text-center fw-bolder fs-4">SWEATSHIRT COLLECTION</p>
+                                <p class="card-text text-center fw-bolder fs-4">SWEATSHIRT COLLECTION</p>
                             </div>
-                          </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    
-</main>
+
+    </main>
 </body>
+
 </html>

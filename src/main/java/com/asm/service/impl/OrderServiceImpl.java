@@ -1,6 +1,7 @@
 package com.asm.service.impl;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,5 +36,23 @@ public class OrderServiceImpl implements OrderService{
         .stream().peek(d -> d.setOrder(order)).collect(Collectors.toList());
         odDao.saveAll(details);
         return order;
+    }
+
+    @Override
+    public List<OrderDetail> findbyOrderId(Long id) {
+        // TODO Auto-generated method stub
+        return odDao.findbyOrderId(id);
+    }
+
+    @Override
+    public Order findById(Long id) {
+        // TODO Auto-generated method stub
+       return oDao.findById(id).get();
+    }
+
+    @Override
+    public List<OrderDetail> findByUsername(String username) {
+        // TODO Auto-generated method stub
+        return odDao.findByUsername(username);
     }
 }

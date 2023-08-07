@@ -1,5 +1,6 @@
 package com.asm.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -26,10 +27,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Table(name="Orders")
-public class Order {
+public class Order implements Serializable {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    int id;
+    Long id;
     
     @ManyToOne
     @JoinColumn(name="username")
@@ -41,7 +42,6 @@ public class Order {
 
     String address;
 
-    @JsonIgnore
-    @OneToMany(mappedBy="order")
+    @OneToMany(mappedBy = "order")
     List<OrderDetail> orderDetails;
 }

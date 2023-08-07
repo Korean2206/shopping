@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.asm.DAO.ProductDAO;
@@ -17,9 +19,9 @@ public class ProductServiceImpl implements ProductService{
     ProductDAO pDao;
 
     @Override
-    public List<Product> findAll() {
+    public Page<Product> findAll(Pageable pageable) {
         // TODO Auto-generated method stub
-        return pDao.findAll();
+        return pDao.findAllP(pageable);
     }
 
     @Override
@@ -34,8 +36,16 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public List<Product> findByidAndGender(String cid, boolean b) {
+    public Page<Product> findByidAndGender(String cid, boolean b,Pageable pageable) {
         // TODO Auto-generated method stub
-        return pDao.findByCategoryIdAndGender(cid, b);
+        return pDao.findByCategoryIdAndGender(cid, b,pageable);
     }
+
+    @Override
+    public List<Product> findbyBestSeller() {
+        // TODO Auto-generated method stub
+        return pDao.finByBestSeller();
+    }
+
+    
 }

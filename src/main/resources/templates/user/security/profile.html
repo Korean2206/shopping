@@ -16,16 +16,17 @@
 
             <!-- edit form column -->
             <div class=" personal-info" >
-                <form class="form-horizontal" role="form" action="" enctype="multipart/form-data"
+                <form class="form-horizontal" role="form" th:action="@{/security/profile}" enctype="multipart/form-data"
                     method="post">
                     <div class="row">
                         <div class="col-md-3">
                             <div class="text-center">
-                                <img style="max-height: 200px;" id="avatar" name="image" src=""
+                                <img style="max-height: 200px;" id="avatar" name="image" th:src="@{|/avatar/${infor.photo}|}"
                                     class="avatar img-circle img-thumbnail" alt="avatar">
                                 <h6>Cập nhật ảnh khác...</h6>
 
-                                <input name="attach" type="file" class="form-control">
+                                <input th:name="attach" type="file" class="form-control"
+                                onchange="document.getElementById('avatar').src = window.URL.createObjectURL(this.files[0])">
                             </div>
                         </div>
                         <div class="col-md-9">
@@ -33,20 +34,20 @@
                             <div class="form-group">
                                 <label class="col-lg-3 control-label">Họ tên:</label>
                                 <div class="col-lg-8">
-                                    <input name="fullname"  class="form-control" type="text">
+                                    <input th:name="fullname" th:value="${infor.fullname}"  class="form-control" type="text">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-lg-3 control-label">Email:</label>
                                 <div class="col-lg-8">
-                                    <input name="email" class="form-control" type="text">
+                                    <input th:name="email" th:value="${infor.email}"  class="form-control" type="text">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-lg-3 control-label">Password:</label>
                                 <div class="col-lg-8">
-                                    <input name="password"  class="form-control" type="text"
-                                        value="">
+                                    <input th:name="password"   class="form-control" type="text"
+                                    th:value="${infor.password}">
                                 </div>
                             </div>
 
@@ -63,6 +64,14 @@
                 </form>
             </div>
         </div>
+        <script>
+            function saveAlert() {
+                alert("Đã lưu thay đổi");
+            }
+            function cancelAlert() {
+                alert("Đã hủy thay đổi");
+            }
+        </script>
     </main>
 </body>
 

@@ -33,7 +33,7 @@ public class Product {
     String name;
     String image;
     Double price;
-
+    int quantity;
     @Temporal(TemporalType.DATE)
     @Column(name="create_date")
     Date create_date = new Date();
