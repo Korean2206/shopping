@@ -9,8 +9,32 @@
 
 <body>
 	<main >
+        <style>
+            
+            tbody {
+                display: block;
+                height: 500px;
+                overflow: auto;
+            }
+    
+            thead,
+            tbody tr {
+                display: table;
+                width: 100%;
+                table-layout: fixed;
+                /* even columns width , fix width of table too*/
+            }
+    
+            thead {
+                width: calc(100% - 1em)
+                    /* scrollbar is average 1em/16px width, remove it from thead width */
+            }
+    
+            table {
+                width: 400px;
+            }
+        </style>
         <div style="margin:0 50px; margin-top: 200px; margin-bottom:50px; " class="card" th:fragment="shopping-cart">
-            <div style="max-height: 500px; overflow-y: scroll;">
             <table class="table">
                 <thead>
                     <th>Image</th>
@@ -20,7 +44,7 @@
                     <th>Amount</th>
                     <th></th>
                 </thead>
-                <tbody style="max-height: 200px;overflow-y: scroll;">
+                <tbody style="max-height: 300px;overflow-y: scroll;">
                     <tr ng-repeat="item in cart.items">
                         <td><img width="80px;" height="70px" style="object-fit: contain;" src="/product/{{item.image}}" alt=""></td>
                         <td>{{item.name}}</td>
@@ -38,7 +62,6 @@
                     </tr>
                 </tbody>
             </table>
-        </div>
             <div class="card-footer">
                     <div style="text-align:right; margin-top:15px;">
                         <button ng-click="cart.clear()" class="btn btn-danger">

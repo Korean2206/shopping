@@ -21,5 +21,13 @@ public interface ProductService {
     Page<Product> findByidAndGender(String cid, boolean b,Pageable pageable);
 
     Page<Product> findByKeyword(String string, Pageable pageable);
+
+    List<Product> findAll();
+
+    Product update(Product product);
+
+    Product create(Product product) throws Exception;
+
+    void delete(Product product);
     
 }

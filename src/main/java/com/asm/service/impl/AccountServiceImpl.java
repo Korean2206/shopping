@@ -1,5 +1,7 @@
 package com.asm.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,5 +36,11 @@ public class AccountServiceImpl implements AccountService {
     public void update(Account user) {
         // TODO Auto-generated method stub
         aDao.save(user);
+    }
+
+    @Override
+    public List<Account> findAll() {
+        // TODO Auto-generated method stub
+       return aDao.findAll();
     }
 }

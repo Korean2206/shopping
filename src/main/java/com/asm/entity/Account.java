@@ -12,6 +12,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -32,8 +34,10 @@ public class Account {
     String photo;
     String addres;
     String mobile;
+    @JsonIgnore
     @OneToMany(fetch = FetchType.EAGER,mappedBy="account",cascade = CascadeType.ALL)
     List<Authority> authorities;
+    @JsonIgnore
     @OneToMany(mappedBy="account")
     List<Order> orders;
 }

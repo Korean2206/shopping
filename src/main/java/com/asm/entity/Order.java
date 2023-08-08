@@ -42,6 +42,7 @@ public class Order implements Serializable {
 
     String address;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "order")
     List<OrderDetail> orderDetails;
 }

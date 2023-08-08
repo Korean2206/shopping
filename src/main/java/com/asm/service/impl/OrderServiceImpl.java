@@ -55,4 +55,10 @@ public class OrderServiceImpl implements OrderService{
         // TODO Auto-generated method stub
         return odDao.findByUsername(username);
     }
+
+    @Override
+    public List<Order> findAll() {
+        // TODO Auto-generated method stub
+        return oDao.findAll();
+    }
 }

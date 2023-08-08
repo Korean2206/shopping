@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{/admin/layout/index::areas(~{::title},~{::main})}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Order</title>
+</head>
+
+<body>
+    <main style="margin:50px;">
+      <div style="max-height: 80%; overflow-y: scroll;">
+
+        <table class="table " border="1">
+            <thead>
+              <tr >
+                <th>Order Id</th>
+                <th>Fullname</th>
+                <th>Address</th>
+                <th>Create Date</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody border="1">
+              <tr ng-repeat="item in order.items">
+               <td>{{item.id}}</td>
+               <td>{{item.account.fullname}}</td>
+               <td>{{item.address}}</td>
+               <td>{{item.create_date}}</td>
+               <td>
+                    <button ng-click="delete(item)" class="btn btn-outline-danger "><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                        <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+                      </svg></button>
+               </td>
+              </tr>
+            </tbody>
+          </table>
+          </div>
+          <!-- <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+            <button type="button" class="btn btn-primary"><<</button>
+            <button type="button" class="btn btn-primary">>></button>
+          </div> -->
+    </div>
+        
+    </main>
+	
+</body>
+
+</html>

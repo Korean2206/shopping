@@ -177,7 +177,7 @@ header {
 
 .navcontainer {
   height: calc(100vh - 70px);
-  width: 468px;
+  width: 260px;
   position: relative;
   overflow-y: scroll;
   overflow-x: hidden;

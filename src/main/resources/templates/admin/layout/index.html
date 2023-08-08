@@ -13,13 +13,16 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-resource.min.js"></script>
     <link rel="stylesheet" th:href="@{/css/adminResponsive.css}">
     <link rel="stylesheet" th:href="@{/css/adminStyle.css}">
     <!-- Style -->
     <title th:replace="${title}"></title>
 </head>
 
-<body>
+<body ng-app="dashboard-app" ng-controller="dashboard-ctrl">
 
     <!-- for header part -->
     <header>
@@ -63,8 +66,8 @@
                     <details class="">
                         <summary style="font-size: 16px;" > Quản lý sản phẩm</summary>
                         <ul>
-                            <li><a href="">Danh sách sản phẩm</a></li>
-                            <li style="margin-top:10px;"><a href="">Thêm sản phẩm</a></li>
+                            <li><a href="/admin/product/list">Danh sách sản phẩm</a></li>
+                            <li style="margin-top:10px;"><a href="/admin/product/add">Thêm sản phẩm</a></li>
                         </ul>
 
                     </details>
@@ -72,28 +75,25 @@
                     <details class="">
                         <summary style="font-size: 16px;" > Quản lý đơn hàng</summary>
                         <ul>
-                            <li><a href="">Danh sách Đơn hàng</a></li>
-
+                            <li><a href="/admin/order/list">Danh sách Đơn hàng</a></li>
                         </ul>
 
                     </details>
 
                     <details class="">
-                        <summary style="font-size: 16px;" > Quản lý khách hàng</summary>
+                        <summary style="font-size: 16px;" > Quản lý loại sản phẩm</summary>
                         <ul>
-                            <li><a href="">Danh sách khách hàng</a></li>
-                            <li style="margin-top:10px;"><a href="">Thêm khách hàng</a>
-                            </li>
-
+                            <li><a href="">Danh sách loại</a></li>
+                            <li style="margin-top:10px;"><a href="">Thêm lọai</a></li>
                         </ul>
 
                     </details>
 
                     <details class="">
-                        <summary style="font-size: 16px;"> Quản lý nhân viên</summary>
+                        <summary style="font-size: 16px;"> Quản lý account</summary>
                         <ul>
-                            <li><a href="">Danh sách nhân viên</a></li>
-                            <li style="margin-top:10px;"><a href="">Thêm nhân viên</a>
+                            <li><a href="">Danh sách account</a></li>
+                            <li style="margin-top:10px;"><a href="">Phân quyền account</a>
                             </li>
 
                         </ul>
@@ -130,6 +130,7 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
     <script th:src="@{/js/index.js}"></script>
+    <script src="/js/dashboard-app.js"></script>
 </body>
 
 </html>

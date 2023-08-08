@@ -53,5 +53,35 @@ public class ProductServiceImpl implements ProductService{
         return pDao.findByKeyword(string, pageable);
     }
 
+    @Override
+    public List<Product> findAll() {
+        // TODO Auto-generated method stub
+        return pDao.findAll();
+    }
+
+    @Override
+    public Product update(Product product) {
+        // TODO Auto-generated method stub
+        return pDao.save(product);
+    }
+
+    @Override
+    public Product create(Product product) throws Exception {
+        // TODO Auto-generated method stub
+        if(pDao.existsById(product.getId())){
+            throw new Exception();
+
+        }
+        return pDao.save(product);
+    }
+
+    @Override
+    public void delete(Product product) {
+        // TODO Auto-generated method stub
+        if(pDao.existsById(product.getId())){
+             pDao.delete(product);
+        }
+    }
+
     
 }
