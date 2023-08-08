@@ -31,7 +31,7 @@ public class Order implements Serializable {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     Long id;
-    
+    String status = "Chờ xác nhận";
     @ManyToOne
     @JoinColumn(name="username")
     Account account;

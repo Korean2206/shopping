@@ -7,7 +7,7 @@
 
 <body>
     <main style="margin-top:200px; ">
-        <h1 width="100%" style="text-align:center">Your orders</h1>
+        <h1 width="100%" style="text-align:center">Đơn đặt hàng của bạn</h1>
         <style>
             
             tbody {
@@ -35,12 +35,15 @@
         </style>
         <table class="table" border="1">
             <thead>
-                <th>Order ID</th>
-                <th>Image</th>
-                <th>Product name</th>
-                <th>Price</th>
-                <th>Quantity</th>
-                <th>Create date</th>
+                <th>Mã đơn</th>
+                <th>Ảnh SP</th>
+                <th>Tên SP</th>
+                <th>Size</th>
+                <th>Màu</th>
+                <th>Giá</th>
+                <th>Số lượng</th>
+                <th>Ngày tạo</th>
+                <th>Trạng thái</th>
             </thead>
             <tbody style="max-height: 500px; overflow-y: scroll;">
                 <tr th:each="o : ${orders}">
@@ -48,9 +51,12 @@
                     <td><img width="80px;" height="70px;" style="object-fit: contain;"
                             th:src="@{|/product/${o.product.image}|}" alt=""></td>
                     <td>[[${o.product.name}]]</td>
-                    <td>[[${o.price}]]</td>
+                    <td>[[${o.size}]]</td>
+                    <td>[[${o.color}]]</td>
+                    <td>[[${o.price}]] vnđ</td>
                     <td>[[${o.quantity}]]</td>
                     <td>[[${o.order.create_date}]]</td>
+                    <td>[[${o.order.status}]]</td>
                 </tr>
             </tbody>
         </table>

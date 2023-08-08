@@ -20,4 +20,8 @@ public interface OrderService {
 
     List<Order> findAll();
 
+    Order update(Order savedOrder);
+
+    void delete(Long id);
+
 }

@@ -17,8 +17,8 @@ import com.asm.entity.OrderDetail;
 import com.asm.service.OrderService;
 
 @Service
-public class OrderServiceImpl implements OrderService{
-    
+public class OrderServiceImpl implements OrderService {
+
     @Autowired
     OrderDAO oDao;
 
@@ -30,10 +30,11 @@ public class OrderServiceImpl implements OrderService{
         ObjectMapper mapper = new ObjectMapper();
         Order order = mapper.convertValue(orderData, Order.class);
         oDao.save(order);
-        
-        TypeReference<List<OrderDetail>> type = new TypeReference<List<OrderDetail>>(){};
+
+        TypeReference<List<OrderDetail>> type = new TypeReference<List<OrderDetail>>() {
+        };
         List<OrderDetail> details = mapper.convertValue(orderData.get("orderDetails"), type)
-        .stream().peek(d -> d.setOrder(order)).collect(Collectors.toList());
+                .stream().peek(d -> d.setOrder(order)).collect(Collectors.toList());
         odDao.saveAll(details);
         return order;
     }
@@ -47,7 +48,7 @@ public class OrderServiceImpl implements OrderService{
     @Override
     public Order findById(Long id) {
         // TODO Auto-generated method stub
-       return oDao.findById(id).get();
+        return oDao.findById(id).get();
     }
 
     @Override
@@ -60,5 +61,28 @@ public class OrderServiceImpl implements OrderService{
     public List<Order> findAll() {
         // TODO Auto-generated method stub
         return oDao.findAll();
+    }
+
+    @Override
+    public Order update(Order savedOrder) {
+        // TODO Auto-generated method stub
+        return oDao.save(savedOrder);
+    }
+
+    @Override
+    public void delete(Long id) {
+        // TODO Auto-generated method stub
+        try {
+            List<OrderDetail> details = odDao.findbyOrderId(id);
+            if (details == null) {
+
+            } else {
+                odDao.deleteByOrderId(id);
+            }
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+        oDao.deleteById(id);
+
     }
 }

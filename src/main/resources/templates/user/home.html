@@ -21,14 +21,21 @@
                     <div th:each="item: ${items}" class="col-sm-3 py-2 ">
                         <div class="card" action="">
                             <a th:href="@{|/product/detail/${item.id}|}">
-                            <img style="height: 200px;
+                                <img style="height: 200px;
                                 max-width: 100%;object-fit: contain;" th:src="@{|/product/${item.image}|}"
-                                class="card-img-top product_img" alt="${item.image}">
+                                    class="card-img-top product_img" alt="${item.image}">
                             </a>
                             <div class="card-body">
                                 <h6 class="card-title text-center" th:text="${item.name}">
                                 </h6>
-                                <p class="card-text text-center">$[[${item.price}]]</p>
+                                <p class="card-text text-center">[[${item.price}]] vnđ</p>
+                                <p class="card-text ">Size: <input name="size" style="margin: 0 5px;" type="radio"
+                                        th:each="s: ${item.size}" th:value="${s.size_name}" th:text="${s.size_name}"
+                                        ng-model="size" /> </p>
+                                <p class="card-text ">Màu: <input name="color" style="margin: 0 5px;" type="radio"
+                                        th:each="c: ${item.color}" th:value="${c.color_name}" th:text="${c.color_name}"
+                                        ng-model="color" /> </p>
+
                                 <button th:attr="ng-click=@{|cart.add(${item.id})|}" class="btn btn-secondary ">Thêm vào
                                     giỏ hàng</button>
                             </div>

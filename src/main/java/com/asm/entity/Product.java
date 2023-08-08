@@ -46,4 +46,15 @@ public class Product {
     @JsonIgnore
     @OneToMany(mappedBy="product")
     List<OrderDetail> orderDetails;
+
+    @JsonIgnore
+    @OneToMany(mappedBy="product")
+    List<Division> division;
+
+    @JsonIgnore
+    @OneToMany(mappedBy="product")
+    List<Size> size;
+    @JsonIgnore
+    @OneToMany(mappedBy="product")
+    List<Color> color;
 }

@@ -1,20 +1,34 @@
 const app = angular.module("shopping-cart-app", [])
 app.controller("shopping-cart-ctrl", function ($scope, $http) {
 
+    $scope.size
+    $scope.color
     $scope.cart = {
         items: [],
+       
         add(id) {
-            var item = this.items.find(item => item.id == id)
+            var item = this.items.find(item => item.id == id && item.size == $scope.size && item.color == $scope.color)
+            if($scope.size === undefined || $scope.color === undefined){
+                if($scope.size === undefined){
+                    alert("Bạn chưa chọn size")
+                }else{
+                    alert("Bạn chưa chọn màu")
+                }
+            }else{
+                var size = $scope.size
+                var color = $scope.color
             if (item) {
                 item.qty++
                 this.saveToLocalStorage();
             } else {
                 $http.get(`/rest/products/${id}`).then(resp => {
                     resp.data.qty = 1;
+                    resp.data.size = size
+                    resp.data.color = color
                     this.items.push(resp.data);
                     this.saveToLocalStorage();
                 })
-            }
+            }}
         },
         get count() {
             return this.items
@@ -55,7 +69,9 @@ app.controller("shopping-cart-ctrl", function ($scope, $http) {
                 return {
                     product:{id:item.id},
                     price:item.price,
-                    quantity:item.qty
+                    quantity:item.qty,
+                    size:item.size,
+                    color:item.color
                 }
             })
         },

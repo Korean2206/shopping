@@ -8,7 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -50,5 +52,12 @@ public class OrderController {
                 .mapToDouble(d -> d.getPrice() * d.getQuantity()).sum());
 
         return "user/order/detail";
+    }
+    @PostMapping("/order/update-status")
+    public String updateStatus(@ModelAttribute("order") Order order) {
+        Order savedOrder = orderService.findById(order.getId());
+        savedOrder.setStatus(order.getStatus());
+        orderService.update(savedOrder);
+        return "redirect:/order/detail/" + order.getId();
     }
 }

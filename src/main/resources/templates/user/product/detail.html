@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{/user/layout/layout::areas(~{::title},~{::main})}">
 <head>
+    <meta charset="UTF-8">
+
     <title>Shoes - Detail</title>
 </head>
 <body>
@@ -21,9 +23,12 @@
                                     <div class="mt-4 mb-3">
                                         <h5 class="text-uppercase">[[*{name}]]</h5>
                                         <div class="price d-flex flex-row align-items-center"> 
-                                            <span class="act-price">[[*{price}]]$</span>
+                                            <span class="act-price">Giá: [[*{price}]] vnđ</span>
                                            
                                         </div>
+                                        <p style="margin-top: 10px;" class="card-text " >Size: <input  name="size" style="margin: 0 5px;" type="radio" th:each="s: ${item.size}" th:value="${s.size_name}" th:text="${s.size_name}" ng-model="size"/> </p>
+                                        <p class="card-text ">Màu: <input name="color" style="margin: 0 5px;" type="radio" th:each="c: ${item.color}" th:value="${c.color_name}" th:text="${c.color_name}"  ng-model="color"/> </p>
+                        
                                     </div>
                                     <div class="cart mt-4 align-items-center"> <button th:attr="ng-click=@{|cart.add(${item.id})|}" class="btn btn-danger text-uppercase mr-2 px-4">Add to cart</button> <i class="fa fa-heart text-muted"></i> <i class="fa fa-share-alt text-muted"></i> </div>
                                     <ul style="list-style-type: none;margin-top: 50px;">

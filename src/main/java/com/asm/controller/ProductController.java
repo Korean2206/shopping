@@ -125,6 +125,7 @@ public class ProductController {
         model.addAttribute("productPage", productPage);
 
         model.addAttribute("items", productPage.getContent());
+       
         int totalPages = productPage.getTotalPages();
         if (totalPages > 0) {
             List<Integer> pageNumbers = IntStream.rangeClosed(0, totalPages - 1)

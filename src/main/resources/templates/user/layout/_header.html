@@ -23,10 +23,14 @@
 
             </span>
             <ul class="user-li">
-              <li><a href="/security/profile">View profile</a></li>
-              <li><a href="/order/list">Your orders</a></li>
-              <li><a href="/security/logoff">Log off</a></li>
+              <li><a href="/security/profile">Xem thông tin</a></li>
+              <li><a href="/order/list">Đơn đặt hàng của bạn</a></li>
+              <li><a href="/security/logoff">Đăng xuất</a></li>
             </ul>
+          </li>
+          <li sec:authorize="hasAnyRole('DIRE','STAF')">
+            <a style="color:#bda87f; cursor: pointer;" href="/admin/index" >Admin Page</a>
+
           </li>
         </ul>
         <ul class="nav-right">
@@ -97,7 +101,7 @@
             <li class="nav-item dropdown">
               <a class="nav-link  mx-2 dropdown-toggle" th:href="@{/product/male}" id="navbarDropdownMenuLink1"
                 role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Man
+                Nam
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1">
                 <li th:each="c: ${cates}"><a class="dropdown-item"
@@ -108,7 +112,7 @@
             <li class="nav-item dropdown">
               <a class="nav-link mx-2 dropdown-toggle" th:href="@{/product/female}" id="navbarDropdownMenuLink2"
                 role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Woman
+                Nữ
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
                 <li th:each="c: ${cates}"><a class="dropdown-item"

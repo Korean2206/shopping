@@ -39,6 +39,8 @@
                 <thead>
                     <th>Image</th>
                     <th>Name</th>
+                    <th>Size</th>
+                    <th>Color</th>
                     <th>Price</th>
                     <th>Quantity</th>
                     <th>Amount</th>
@@ -48,6 +50,8 @@
                     <tr ng-repeat="item in cart.items">
                         <td><img width="80px;" height="70px" style="object-fit: contain;" src="/product/{{item.image}}" alt=""></td>
                         <td>{{item.name}}</td>
+                        <td>{{item.size}}</td>
+                        <td>{{item.color}}</td>
                         <td>{{item.price|number:2}}$</td>
                         <td><input type="number" ng-model="item.qty" min="1" style="width: 50px;"></td>
                         <td>{{item.qty*item.price|number:2}}$</td>
@@ -58,6 +62,7 @@
                                     <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
                                   </svg>
                             </button>
+                            
                         </td>
                     </tr>
                 </tbody>
