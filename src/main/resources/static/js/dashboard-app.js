@@ -1,5 +1,15 @@
 const app = angular.module('dashboard-app', [])
-app.controller('dashboard-ctrl', function ($scope, $http) {
+app.controller('dashboard-ctrl', function ($scope, $http, $location, $window) {
+
+    // $routeProvider
+    // 	.when('/list', {
+    // 		templateUrl: '/admin/list/product.html',
+    // 		controller: 'dashboard-ctrl',
+    // 	})
+    // 	.when('/add/:id', {
+    // 		templateUrl: '/admin/manage/product.html',
+    // 		controller: 'dashboard-ctrl',
+    // 	})
 
     $scope.items = [];
     $scope.form = {};
@@ -22,17 +32,16 @@ app.controller('dashboard-ctrl', function ($scope, $http) {
                 alert("err: " + err)
             })
         },
-        orderDetails:[],
+        orderDetails: [],
         view(item) {
             $http.get(`/rest/orderDetails/${item.id}`).then(resp => {
                 this.orderDetails = resp.data;
-                console.log(this.orderDetails)
             })
         },
-        changeStatus(item,status) {
+        changeStatus(item, status) {
             item.status = status
             console.log(status)
-            $http.put(`/rest/orders/${item.id}`,item).then(resp => {
+            $http.put(`/rest/orders/${item.id}`, item).then(resp => {
                 $scope.order.loadOrder();
             })
         }
@@ -65,15 +74,27 @@ app.controller('dashboard-ctrl', function ($scope, $http) {
 
     // Hiển thị lên form
     $scope.edit = function (item) {
-        $scope.form = angular.copy(item);
+        var url = `http://localhost:8080/admin/product/add`;
+        $window.location.href = url;
+        $http.get(`/rest/products/${item.id}`).then(resp =>{
+            $scope.form = resp.data
+            console.log($scope.form)
+            console.log(resp.data)
+        })
     }
-
+    $scope.size
+    $scope.color
     // Thêm sản phẩm mới
     $scope.create = function () {
         var item = angular.copy($scope.form);
+
+        console.log($scope.size)
         $http.post(`/rest/products`, item).then(resp => {
             resp.data.create_date = new Date(resp.data.create_date)
             $scope.items.push(resp.data);
+            $http.post('/rest/size',$scope.size).then(resp => {
+                
+            })
             $scope.reset();
         }).catch(error => {
             console.log("Error", error);

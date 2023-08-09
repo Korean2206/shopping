@@ -3,6 +3,8 @@ package com.asm.entity;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -22,7 +24,9 @@ import lombok.NoArgsConstructor;
 @Table(name = "colors")
 public class Color {
     @Id
-    String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+    int id;
     String color_name;
     @ManyToOne
     @JoinColumn(name = "product_id")

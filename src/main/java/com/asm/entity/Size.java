@@ -3,6 +3,8 @@ package com.asm.entity;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -19,19 +21,19 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="Sizes")
+@Table(name = "Sizes")
 public class Size {
     @Id
-    String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    int id;
     String size_name;
 
     @ManyToOne
-    @JoinColumn(name="product_id")
+    @JoinColumn(name = "product_id")
     Product product;
 
-     @JsonIgnore
-    @OneToMany(mappedBy="size")
+    @JsonIgnore
+    @OneToMany(mappedBy = "size")
     List<Division> division;
-
 
 }

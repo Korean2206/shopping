@@ -9,7 +9,7 @@
 
 <body>
     <main style="margin:50px;">
-      <div style="max-height: 80%; overflow-y: scroll;">
+      <div style="max-height: 65%; overflow-y: scroll;">
 
         <table class="table table-bordered">
           <thead>
@@ -29,7 +29,7 @@
                <td><img alt="" src="/product/{{item.image}}" width="100px"></td>
              <td>{{item.id}}</td>
              <td>{{item.name}}</td>
-             <td>{{item.price | currency : "": 3}}<span>VND</span></td>
+             <td>{{item.price | currency : "": 2}}<span>VND</span></td>
              <td>{{item.create_date}}</td>
              <td>{{item.category.id}}</td>
              <td>{{item.available?'yes':'No'}}</td>

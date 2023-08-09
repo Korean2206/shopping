@@ -53,11 +53,11 @@ public class OrderController {
 
         return "user/order/detail";
     }
-    @PostMapping("/order/update-status")
-    public String updateStatus(@ModelAttribute("order") Order order) {
-        Order savedOrder = orderService.findById(order.getId());
-        savedOrder.setStatus(order.getStatus());
+    @PostMapping("/order/cancel_order/{id}")
+    public String updateStatus(@PathVariable("id") Long id) {
+        Order savedOrder = orderService.findById(id);
+        savedOrder.setStatus("Đã hủy");
         orderService.update(savedOrder);
-        return "redirect:/order/detail/" + order.getId();
+        return "redirect:/order/list";
     }
 }
