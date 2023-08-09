@@ -50,7 +50,7 @@
                         </h6>
                         <p class="card-text text-center">[[${item.price}]] vnđ</p>
                         <p class="card-text ">Size:
-                            <input name="size" style="margin: 0 5px;" type="radio" th:each="s: ${item.size}"
+                            <input th:each="s: ${item.size}" th:id="|Size[${s.product.id}]|" style="margin: 0 5px;" type="radio" 
                                 th:value="${s.size.id}" th:text="${s.size.id}" ng-model="size" />
                         </p>
                         <p class="card-text ">Màu:

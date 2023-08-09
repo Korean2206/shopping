@@ -85,14 +85,20 @@
                         </ul>
 
                     </details>
-
-                    <details style="max-width:80%">
+                    
+                    <details style="max-width:80%" sec:authorize="hasRole('DIRE')">              
                         <summary style="font-size: 16px;"> Quản lý account</summary>
                         <ul>
-                            <li><a href="">Danh sách account</a></li>
-                            <li style="margin-top:10px;"><a href="">Phân quyền account</a>
-                            </li>
+                            <li><a href="/admin/authority/list">Phân Quyền account</a></li>
+        
+                        </ul>
 
+                    </details>
+                    <details style="max-width:80%" sec:authorize="hasRole('DIRE')">              
+                        <summary style="font-size: 16px;"> Doanh thu</summary>
+                        <ul>
+                            <li><a href="/admin/authority/list">Doanh thu sản phẩm</a></li>
+        
                         </ul>
 
                     </details>
@@ -101,9 +107,9 @@
                     <hr style="width: 100%;margin: 0;">
 
 
-                    <a href="/security/profile" style="text-decoration: none;color:#000;" class="nav-option option6">
+                    <a href="/home/index" style="text-decoration: none;color:#000;" class="nav-option option6">
                         <i class="fa fa-user" style="font-size:30px" aria-hidden="true"></i>
-                        <h3 style="font-size: 16px;"> Tài khoản</h3>
+                        <h3 style="font-size: 16px;"> User page</h3>
                     </a>
 
                         <a href="/security/logoff" style="text-decoration: none;color:#000;border:none; background-color:#fff;">

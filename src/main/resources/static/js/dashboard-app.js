@@ -141,5 +141,69 @@ app.controller('dashboard-ctrl', function ($scope, $http, $location, $window) {
             });
         }
 	};
+
+
+      // Authority function
+
+      $scope.roles = [];
+      $scope.admins = [];
+      $scope.authorities = [];
+  
+      $scope.authInitialize = function () {
+          $http.get("/rest/roles").then(response => {
+              $scope.roles = response.data;
+          })
+          
+          $http.get("/rest/accounts").then(response => {
+              $scope.admins = response.data;
+          })
+  
+          $http.get("/rest/authorities").then(response => {
+              $scope.authorities = response.data;
+          }).catch(error => {
+  
+          })
+  
+          $scope.authority_of = function (acc, role) {
+              if ($scope.authorities) {
+                  return $scope.authorities.find(ur => ur.account.username == acc.username && ur.role.id == role.id);
+              }
+          }
+  
+          $scope.authority_changed = function (acc, role) {
+              var authority = $scope.authority_of(acc, role);
+              if (authority) {
+                  $scope.revoke_authority(authority);
+              } else {
+                  authority = { account: acc, role: role };
+                  $scope.grant_authority(authority);
+              }
+          }
+  
+          // Them moi authority
+          $scope.grant_authority = function (authority) {
+              $http.post(`/rest/authorities`, authority).then(response => {
+                  $scope.authorities.push(response.data);
+                  alert("Cấp quyền sử dụng thành công");
+              }).catch(error => {
+                  alert("Cấp quyền thất bại");
+                  console.log("Error", error);
+              })
+          }
+  
+          // Xoa authority
+          $scope.revoke_authority = function (authority) {
+              $http.delete(`/rest/authorities/${authority.id}`).then(response => {
+                  var index = $scope.authorities.findIndex(a => a.id == authority.id);
+                  $scope.authorities.splice(index, 1);
+                  alert("Thu hồi quyền mời thành công");
+              }).catch(error => {
+                  alert("Thu hồi quyền sử dụng thất bại");
+                  console.log("Error", error);
+              })
+          }
+      };
+  
+      $scope.authInitialize();
 	
 })

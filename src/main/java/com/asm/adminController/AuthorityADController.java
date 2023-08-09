@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class AuthorityADController {
 	@RequestMapping("/admin/authority/list")
 	public String index() {
-		return "/admin/authority/index";
+		return "admin/authority/index";
 	}
 }
