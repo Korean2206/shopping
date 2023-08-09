@@ -141,5 +141,69 @@ app.controller('dashboard-ctrl', function ($scope, $http, $location, $window) {
             console.log("Error", error);
         })
     }
+    
+    
+	// ---------
+	// Category function
+	
+	$scope.categories = [];
+	$scope.category = {};
+	$scope.editing = false;
 
+	function fetchCategories() {
+        $http.get('/rest/categories').then(function(response) {
+            $scope.categories = response.data;
+        });
+    }
+    
+    fetchCategories();
+    
+    $scope.addCategory = function() {
+        $http.post('/rest/categories', $scope.category).then(function(response) {
+            $scope.categories.push(response.data);
+            $scope.resetForm();
+        });
+    };
+    
+    $scope.resetForm = function() {
+        $scope.category = {};
+        $scope.editing = false;
+
+    };
+    
+    $scope.updateCategory = function() {
+        $http.put('/rest/categories/' + $scope.category.id, $scope.category).then(function(response) {
+            console.log('Danh mục đã được cập nhật:', response.data);
+			alert('Danh mục đã được cập nhật:', response.data)
+            var updatedCategory = response.data;
+            var index = $scope.categories.findIndex(function(c) {
+                return c.id === updatedCategory.id;
+            });
+            if (index !== -1) {
+                $scope.categories[index] = updatedCategory;
+            }
+            // ...
+        }, function(error) {
+            console.error('Lỗi khi cập nhật danh mục:', error);
+        });
+    };
+
+    $scope.editCategory = function(category) {
+        $scope.editing = true;
+        $scope.category = angular.copy(category);
+    };
+
+   $scope.deleteCategory = function(category) {
+        var confirmDelete = confirm('Bạn có chắc muốn xóa danh mục này?');
+        if (confirmDelete) {
+            $http.delete('/rest/categories/' + category.id).then(function(response) {
+                console.log('Danh mục đã được xóa:', category);
+                fetchCategories();
+                 $scope.resetForm();
+            }, function(error) {
+                console.error('Lỗi khi xóa danh mục:', error);
+            });
+        }
+	};
+	
 })
