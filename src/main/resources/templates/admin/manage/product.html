@@ -40,10 +40,10 @@
                   th:checked="${item.sex ? false : true}">
                 <label class="form-check-label">Female</label>
               </div>
-              <div class="col-sm-6">
+              <!-- <div class="col-sm-6">
                 <label class="form-label">Size: </label>
-                  <input  style="margin: 0 5px;" type="checkbox"  th:each="s: ${size}" name="size" th:value="${s.id}"
-                  th:text="${s.id}"  >
+                  <input   style="margin: 0 5px;" type="checkbox"  th:each="s: ${size}" name="size" th:value="${s.id}"
+                  th:text="${s.id}" th:checked="${i.size.id == s.id}"  >
 
               </div>
               <div class="col-sm-6">
@@ -51,9 +51,7 @@
 
                 <input style="margin: 0 5px;" type="checkbox" th:each="c: ${color}" name="color" th:value="${c.id}"
                   th:text="${c.color_name}">
-
-
-              </div>
+              </div> -->
 
               <div class="col-sm-6">
                 <label class="form-label">Category</label>

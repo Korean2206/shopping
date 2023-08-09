@@ -24,4 +24,8 @@ public interface OrderService {
 
     void delete(Long id);
 
+    List<Object[]> findProductStatistics();
+
+    List<Object[]> findProductTotalSuccess();
+
 }

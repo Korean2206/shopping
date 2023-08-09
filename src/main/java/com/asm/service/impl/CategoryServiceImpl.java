@@ -45,6 +45,11 @@ public class CategoryServiceImpl implements CategoryService {
             cDao.deleteById(id);
        }
 	}
+	@Override
+	public List<Object[]> findProductduplicate() {
+		// TODO Auto-generated method stub
+		return	cDao.findProductduplicate();
+	}
 	
     
 }

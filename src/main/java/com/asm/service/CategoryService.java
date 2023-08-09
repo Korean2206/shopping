@@ -16,5 +16,7 @@ public interface CategoryService {
     Category create(Category category) throws Exception;
     
     void delete(String id);
+
+	List<Object[]> findProductduplicate();
     
 }

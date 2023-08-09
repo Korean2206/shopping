@@ -85,4 +85,16 @@ public class OrderServiceImpl implements OrderService {
         oDao.deleteById(id);
 
     }
+
+    @Override
+    public List<Object[]> findProductStatistics() {
+        // TODO Auto-generated method stub
+       return  oDao.findProductStatistics();
+    }
+
+    @Override
+    public List<Object[]> findProductTotalSuccess() {
+        // TODO Auto-generated method stub
+        return oDao.findProductTotalSuccess();
+    }
 }
