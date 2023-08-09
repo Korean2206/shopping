@@ -28,7 +28,7 @@ public class AccountServiceImpl implements AccountService {
         if (aDao.existsById(user.getUsername())) {
             throw new Exception();
         }
-        
+
         return aDao.save(user);
     }
 
@@ -41,6 +41,12 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public List<Account> findAll() {
         // TODO Auto-generated method stub
-       return aDao.findAll();
+        return aDao.findAll();
+    }
+
+    @Override
+    public List<Account> getAdministrators() {
+        // TODO Auto-generated method stub
+        return aDao.getAdministrators();
     }
 }
