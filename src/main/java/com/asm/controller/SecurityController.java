@@ -103,7 +103,7 @@ public class SecurityController {
         String password = request.getParameter("password") != null ? request.getParameter("password") : "";
         String image = file.getOriginalFilename();
         if(!file.isEmpty()){
-            File dir = new File(request.getServletContext().getRealPath("/avatar"));
+            File dir = new File("D:\\HomeWork\\java6\\asm1\\asm\\src\\main\\resources\\static\\"+"avatar");
             if(!dir.exists()){
                 dir.mkdirs();
             }

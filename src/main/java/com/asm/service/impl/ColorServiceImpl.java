@@ -5,28 +5,24 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.asm.DAO.SizeDAO;
-import com.asm.entity.Size;
-import com.asm.service.SizeService;
+import com.asm.DAO.ColorDAO;
+import com.asm.entity.Color;
+import com.asm.service.ColorService;
 
 @Service
-public class SizeServiceImpl implements SizeService{
+public class ColorServiceImpl implements ColorService{
 
     @Autowired
-    SizeDAO sDao;
-
+    ColorDAO cDao;
     @Override
-    public List<Size> findAll() {
+    public List<Color> findAll() {
         // TODO Auto-generated method stub
-       return sDao.findAll();
+        return cDao.findAll();
     }
-
     @Override
-    public Size findById(String string) {
+    public Color findById(String string) {
         // TODO Auto-generated method stub
-        return sDao.findById(string).get();
+        return cDao.findById(string).get();
     }
-
-   
     
 }

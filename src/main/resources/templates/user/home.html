@@ -29,12 +29,15 @@
                                 <h6 class="card-title text-center" th:text="${item.name}">
                                 </h6>
                                 <p class="card-text text-center">[[${item.price}]] vnđ</p>
-                                <p class="card-text ">Size: <input name="size" style="margin: 0 5px;" type="radio"
-                                        th:each="s: ${item.size}" th:value="${s.size_name}" th:text="${s.size_name}"
-                                        ng-model="size" /> </p>
-                                <p class="card-text ">Màu: <input name="color" style="margin: 0 5px;" type="radio"
-                                        th:each="c: ${item.color}" th:value="${c.color_name}" th:text="${c.color_name}"
-                                        ng-model="color" /> </p>
+                                <p class="card-text ">Size:
+                                    <input name="size" style="margin: 0 5px;" type="radio" th:each="s: ${item.size}"
+                                        th:value="${s.size.id}" th:text="${s.size.id}" ng-model="size" />
+                                </p>
+                                <p class="card-text ">Màu:
+                                    <input name="color" style="margin: 0 5px;" type="radio" th:each="s: ${item.color}"
+                                        th:value="${s.color.color_name}" th:text="${s.color.color_name}" ng-model="color" />
+                                </p>
+
 
                                 <button th:attr="ng-click=@{|cart.add(${item.id})|}" class="btn btn-secondary ">Thêm vào
                                     giỏ hàng</button>

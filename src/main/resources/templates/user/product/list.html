@@ -49,16 +49,21 @@
                         <h6 class="card-title text-center" th:text="${item.name}">
                         </h6>
                         <p class="card-text text-center">[[${item.price}]] vnđ</p>
-                        <p class="card-text ">Size: <input style="margin: 0 5px;" type="radio" th:each="s: ${item.size}" name="size" th:value="${s.size_name}" th:text="${s.size_name}" ng-model="size"/> </p>
-                        <p class="card-text ">Màu: <input  style="margin: 0 5px;" type="radio" th:each="c: ${item.color}" name="color" th:value="${c.color_name}" th:text="${c.color_name}" ng-model="color"/> </p>
-                        <button th:attr="ng-click=@{|cart.add(${item.id})|}" class="btn btn-secondary ">Thêm vào giỏ hàng</button>
+                        <p class="card-text ">Size:
+                            <input name="size" style="margin: 0 5px;" type="radio" th:each="s: ${item.size}"
+                                th:value="${s.size.id}" th:text="${s.size.id}" ng-model="size" />
+                        </p>
+                        <p class="card-text ">Màu:
+                            <input name="color" style="margin: 0 5px;" type="radio" th:each="s: ${item.color}"
+                                th:value="${s.color.color_name}" th:text="${s.color.color_name}" ng-model="color" />
+                        </p><button th:attr="ng-click=@{|cart.add(${item.id})|}" class="btn btn-secondary ">Thêm vào giỏ hàng</button>
                     </div>
                 </div>
             </div>
         </div>
         <div class="row mt-5" style="justify-content: center">
-            <nav aria-label="Page navigation example ">
-                <ul th:if="${productPage.totalPages > 1}" class="pagination justify-content-center">
+            <nav aria-label="Page navigation example " >
+                <ul th:if="${totalPages  >  1}" class="pagination justify-content-center">
                     <li th:unless="${#strings.equals(param.pageN, #strings.toString(0))}" class="page-item">
                         <a th:href="@{'/product/'+${view}(size=${productPage.size}, pageN=0)}"
                             class="page-link text-dark">|<</a></li>
@@ -66,9 +71,13 @@
                         th:attr="onClick=|autoSubmit('pageN',${p})|"
                             class="page-link text-white bg-dark" th:text="${p+1}"></a></li>
                     <li th:unless="${#strings.equals(param.pageN, #strings.toString(productPage.totalPages -1))}"
-                        class="page-item"><a
+                        class="page-item"><a th:unless="${param.pageN}"
+                            th:href="@{'/product/'+${view}(size=${productPage.size}, pageN=1)}"
+                            class="page-link text-dark">>|</a>
+                            <a th:if="${param.pageN}"
                             th:href="@{'/product/'+${view}(size=${productPage.size}, pageN=${#numbers.formatInteger(param.pageN,10)} + 1)}"
-                            class="page-link text-dark">>|</a></li>
+                            class="page-link text-dark">>|</a>
+                        </li>
 
                 </ul>
             </nav>

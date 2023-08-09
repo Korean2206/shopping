@@ -49,12 +49,13 @@ public class Product {
 
     @JsonIgnore
     @OneToMany(mappedBy="product")
-    List<Division> division;
+    List<SizeDivision> size;
+    @JsonIgnore
+    @OneToMany(mappedBy="product")
+    List<ColorDivision> color;
 
-    @JsonIgnore
-    @OneToMany(mappedBy="product")
-    List<Size> size;
-    @JsonIgnore
-    @OneToMany(mappedBy="product")
-    List<Color> color;
+
+
+    
+
 }

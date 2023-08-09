@@ -6,6 +6,9 @@ import com.asm.entity.Size;
 
 public interface SizeService {
 
-    List<Size> create(List<Size> size);
+
+    List<Size> findAll();
+
+    Size findById(String string);
     
 }

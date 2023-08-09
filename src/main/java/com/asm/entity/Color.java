@@ -21,17 +21,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "colors")
+@Table(name = "Colors")
 public class Color {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-
-    int id;
+    String id;
     String color_name;
-    @ManyToOne
-    @JoinColumn(name = "product_id")
-    Product product;
+    
     @JsonIgnore
-    @OneToMany(mappedBy = "color")
-    List<Division> division;
+    @OneToMany(mappedBy ="color")
+    List<ColorDivision> color;
+    
 }

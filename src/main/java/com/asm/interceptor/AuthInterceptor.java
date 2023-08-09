@@ -24,13 +24,14 @@ public class AuthInterceptor implements HandlerInterceptor {
         String uri = request.getRequestURI();
         String username = request.getRemoteUser();
         if(username == null){
-            System.out.println("username : null");
+            System.out.println("username : "+ username);
         }
         else{
             
             Account account = accountService.findById(username);
             System.out.println("fullname: " +account.getFullname());
             request.setAttribute("fullname",account.getFullname());
+            request.setAttribute("user", account);
         }
 
         return true;

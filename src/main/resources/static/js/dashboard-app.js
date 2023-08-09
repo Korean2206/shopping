@@ -74,74 +74,10 @@ app.controller('dashboard-ctrl', function ($scope, $http, $location, $window) {
 
     // Hiển thị lên form
     $scope.edit = function (item) {
-        var url = `http://localhost:8080/admin/product/add`;
+        var url = `http://localhost:8080/admin/product/update/${item.id}`;
         $window.location.href = url;
-        $http.get(`/rest/products/${item.id}`).then(resp =>{
-            $scope.form = resp.data
-            console.log($scope.form)
-            console.log(resp.data)
-        })
     }
-    $scope.size
-    $scope.color
-    // Thêm sản phẩm mới
-    $scope.create = function () {
-        var item = angular.copy($scope.form);
-
-        console.log($scope.size)
-        $http.post(`/rest/products`, item).then(resp => {
-            resp.data.create_date = new Date(resp.data.create_date)
-            $scope.items.push(resp.data);
-            $http.post('/rest/size',$scope.size).then(resp => {
-                
-            })
-            $scope.reset();
-        }).catch(error => {
-            console.log("Error", error);
-        })
-    }
-
-    // Cập nhật sản phẩm
-    $scope.update = function () {
-        var item = angular.copy($scope.form);
-        $http.put(`/rest/products/${item.id}`, item).then(resp => {
-            var index = $scope.items.findIndex(p => p.id == item.id);
-            $scope.items[index] = item;
-
-        }).catch(error => {
-
-            console.log("Error", error);
-        })
-    }
-
-    // Xóa sản phẩm
-    $scope.delete = function (item) {
-        $http.delete(`/rest/products/${item.id}`).then(resp => {
-            var index = $scope.items.findIndex(p => p.id == item.id);
-            $scope.items.splice(index, 1);
-            $scope.reset();
-
-        }).catch(error => {
-
-            console.log("Error", error);
-        })
-    }
-
-    // Upload hình
-    $scope.imageChanged = function (files) {
-        var data = new FormData();
-        data.append('file', files[0]);
-        $http.post('/rest/upload/product', data, {
-            transformResquest: angular.identity,
-            headers: { 'Content-Type': undefined }
-        }).then(resp => {
-            $scope.form.image = resp.data.name;
-        }).catch(error => {
-
-            console.log("Error", error);
-        })
-    }
-    
+   
     
 	// ---------
 	// Category function

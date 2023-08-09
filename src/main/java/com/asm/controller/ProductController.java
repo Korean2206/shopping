@@ -105,6 +105,7 @@ public class ProductController {
         model.addAttribute("items", productPage.getContent());
         model.addAttribute("productPage", productPage);
         int totalPages = productPage.getTotalPages();
+        model.addAttribute("totalPages", totalPages);
         if (totalPages > 0) {
             List<Integer> pageNumbers = IntStream.rangeClosed(0, totalPages - 1)
                     .boxed()
@@ -112,7 +113,7 @@ public class ProductController {
             model.addAttribute("pageNumbers", pageNumbers);
         }
         model.addAttribute("view", "list");
-
+        
         return "user/product/list";
     }
 

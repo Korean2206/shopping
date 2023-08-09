@@ -131,7 +131,7 @@ header {
 }
 
 .main {
-  height: calc(100vh - 70px);
+  
   width: 151%;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -175,6 +175,7 @@ header {
 }
 
 .navcontainer {
+  height: 100vh;
   width: 260px;
   position: relative;
   overflow-y: scroll;

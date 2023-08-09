@@ -1,15 +1,14 @@
 package com.asm.entity;
 
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,15 +18,21 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "Sizes")
-public class Size {
+@Table(name = "size_division")
+public class SizeDivision {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    String id;
-    String size_name;
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    int id;
+    
+    @ManyToOne
+    @JoinColumn(name="product_id")
+    Product product;
 
-    @JsonIgnore
-    @OneToMany(mappedBy ="size")
-    List<SizeDivision> size;
+    @ManyToOne
+    @JoinColumn(name="size_id")
+    Size size;
 
+    
+    
+    
 }

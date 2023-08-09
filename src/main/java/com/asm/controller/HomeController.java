@@ -20,6 +20,7 @@ public class HomeController {
     public String index(Model model){
         List<Product> list = productService.findbyBestSeller();
         if(list != null)
+       
         model.addAttribute("items", list);
         return "user/home";
     }

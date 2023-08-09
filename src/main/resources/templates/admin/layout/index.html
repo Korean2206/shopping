@@ -41,7 +41,7 @@
             <div class="circle"></div>
             <i class="fa fa-bell" style="font-size: 28px;" aria-hidden="true"></i>
             <div class="dp">
-                <img src="" class="dpicn" alt="dp" style="height: 100%;
+                <img th:src="@{|/avatar/${user.photo}|}" class="dpicn"  style="height: 100%;
                     width: 100%;
                     background-color: #626262;
                     border-radius: 50%;
@@ -65,7 +65,7 @@
                         <summary style="font-size: 16px;"> Quản lý sản phẩm</summary>
                         <ul>
                             <li><a href="/admin/product/list">Danh sách sản phẩm</a></li>
-                            <li style="margin-top:10px;"><a href="/admin/product/add">Thêm sản phẩm</a></li>
+                            <li style="margin-top:10px;"><a href="/admin/product/create">Thêm sản phẩm</a></li>
                         </ul>
 
                     </details>
@@ -101,19 +101,17 @@
                     <hr style="width: 100%;margin: 0;">
 
 
-                    <a href="" style="text-decoration: none;color:#000;" class="nav-option option6">
+                    <a href="/security/profile" style="text-decoration: none;color:#000;" class="nav-option option6">
                         <i class="fa fa-user" style="font-size:30px" aria-hidden="true"></i>
                         <h3 style="font-size: 16px;"> Tài khoản</h3>
                     </a>
 
-                    <form action="" method="post">
-                        <button style="border:none; background-color:#fff;">
+                        <a href="/security/logoff" style="text-decoration: none;color:#000;border:none; background-color:#fff;">
                             <div class="nav-option logout">
                                 <i class="fa fa-sign-out" style="font-size:30px" aria-hidden="true"></i>
                                 <h3 style="font-size: 16px;">Logout</h3>
                             </div>
-                        </button>
-                    </form>
+                        </a>
 
 
                 </div>

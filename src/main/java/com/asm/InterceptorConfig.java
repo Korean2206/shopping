@@ -24,11 +24,11 @@ public class InterceptorConfig implements WebMvcConfigurer{
     public void addInterceptors(InterceptorRegistry registry){
         registry.addInterceptor(globalInterceptor)
         .addPathPatterns("/**")
-        .excludePathPatterns("/rest/**","/admin/**");
+        .excludePathPatterns("/rest/**");
 
         registry.addInterceptor(authInterceptor)
         .addPathPatterns("/**")
-        .excludePathPatterns("/rest/**","/admin/**");
+        .excludePathPatterns("/rest/**");
 
         registry.addInterceptor(orderInter)
         .addPathPatterns("/order/detail/**");
