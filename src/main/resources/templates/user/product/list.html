@@ -43,14 +43,14 @@
                     <a th:href="@{|/product/detail/${item.id}|}">
                         <img style="height: 200px;
                     max-width: 100%;object-fit: contain;" th:src="@{|/product/${item.image}|}"
-                            class="card-img-top product_img" alt="${item.image}">
+                            class="card-img-top product_img" th:alt="${item.image}">
                     </a>
                     <div class="card-body">
                         <h6 class="card-title text-center" th:text="${item.name}">
                         </h6>
                         <p class="card-text text-center">[[${item.price}]] vnđ</p>
                         <p class="card-text ">Size:
-                            <input th:each="s: ${item.size}"  style="margin: 0 5px;" type="radio" 
+                            <input th:each="s: ${item.size}" name="size" style="margin: 0 5px;" type="radio" 
                                 th:value="${s.size.id}" th:text="${s.size.id}" ng-model="size" />
                         </p>
                         <p class="card-text ">Màu:
